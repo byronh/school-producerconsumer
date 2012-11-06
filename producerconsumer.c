@@ -61,7 +61,7 @@ void* producer(void *param) {
         // Create the item to be inserted
         item = rand();
 
-        // Wait for empty semaphore
+        // Decrement the empty semaphore
         sem_wait(&empty);
 
         // Acquire mutex lock before critical section
@@ -92,7 +92,7 @@ void* consumer(void *param) {
         // Sleep for a random amount of time between 1 and 4 seconds
         sleep(rand() % 4 + 1);
 
-        // Wait for full semaphore
+        // Decrement the full semaphore
         sem_wait(&full);
 
         // Acquire mutex lock before critical section
